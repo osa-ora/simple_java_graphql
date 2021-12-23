@@ -8,9 +8,11 @@ import com.netflix.graphql.dgs.DgsQuery;
 import com.netflix.graphql.dgs.InputArgument;
 import com.netflix.graphql.dgs.DgsMutation;
 import java.io.File;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import org.springframework.core.io.ClassPathResource;
 import osa.ora.graph.data.beans.Catalog;
 import osa.ora.graph.data.beans.Item;
@@ -24,11 +26,15 @@ import osa.ora.graph.data.beans.NewItem;
 public class CatalogDatafetcher {
     //all catalog items
     private static List<Item> items = new ArrayList();
-    //load initial catalog items from catalog.json file as initial list for testing ...
-    static{
+    /**
+     * load initial catalog items from catalog.json file as initial list for testing ...
+     */
+    @PostConstruct
+    public void initialize() {
         try {
-            File resource = new ClassPathResource("catalog.json").getFile();
-            String itemsJson = new String(Files.readAllBytes(resource.toPath()));
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("catalog.json");
+            //File resource = new File(is);
+            String itemsJson = new String(is.readAllBytes());
             //initialize the catalog here
             ObjectMapper objectMapper = new ObjectMapper();
             items = objectMapper.readValue(itemsJson, new TypeReference<List<Item>>(){});
