@@ -92,6 +92,47 @@ public class CatalogDatafetcher {
         return addedItem; 
     }
     /**
+     * This method delete item from the stock
+     * @param itemId
+     * @return 
+     */
+    @DgsMutation
+    public boolean deleteFromStock(@InputArgument (value="input") int itemId){
+       if(itemId<=0){
+            System.out.println("Item id cannot be zero or minus!!");
+            return false;
+        }
+        for(Item item:items){
+            if(item.getItemNo()==itemId) {
+                System.out.println("Item found with id="+itemId);
+                items.remove(item);
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * Method to retrieve specific item
+     * @param itemId
+     * @return 
+     */
+    @DgsQuery
+    public Item getItem(@InputArgument int itemId){
+        if(itemId<=0){
+            System.out.println("Item id cannot be zero or minus!!");
+            return null;
+        }
+        //validate if the item already exist, update its price and stock
+        //other elements can be also updated if required
+        for(Item item:items){
+            if(item.getItemNo()==itemId) {
+                System.out.println("Item found with id="+itemId);
+                return item;
+            }
+        }
+        return null;
+    }
+    /**
      * This method returns all catalog items
      * @return 
      */

@@ -1,11 +1,13 @@
 type Query {
     getCatalog(catalogId: Int): Catalog
     getAllItems: [Item]
+    getItem(itemId: Int): Item
     getAllOrders: [Order]
     getOrder(orderId: Int) : Order
 }
 type Mutation {
     addToStock(input: NewItem) : Item
+    deleteFromStock(input: Int): Boolean
     submitNewOrder(input: NewOrder) : Order
 }
 type Catalog {
