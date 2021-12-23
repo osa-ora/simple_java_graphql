@@ -34,9 +34,8 @@ public class OrdersDatafetcher {
     public void initialize() {
         try {
             InputStream is = this.getClass().getClassLoader().getResourceAsStream("orders.json");
-            //File resource = new File(is);
             String itemsJson = new String(is.readAllBytes());
-            //initialize the catalog here
+            //initialize the orders here
             ObjectMapper objectMapper = new ObjectMapper();
             orders = objectMapper.readValue(itemsJson, new TypeReference<List<Order>>(){});
         } catch (Exception ex) {

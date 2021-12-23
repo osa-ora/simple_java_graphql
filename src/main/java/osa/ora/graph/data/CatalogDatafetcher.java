@@ -33,7 +33,6 @@ public class CatalogDatafetcher {
     public void initialize() {
         try {
             InputStream is = this.getClass().getClassLoader().getResourceAsStream("catalog.json");
-            //File resource = new File(is);
             String itemsJson = new String(is.readAllBytes());
             //initialize the catalog here
             ObjectMapper objectMapper = new ObjectMapper();
