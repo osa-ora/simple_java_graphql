@@ -25,7 +25,7 @@ curl -X POST -H "Content-Type: application/json" --data '{"query":"{getOrder (or
 curl -X POST -H "Content-Type: application/json" --data '{"query":"{getCatalog (catalogId: 1){ catalogId  catalogType  items {itemNo typeDesc  itemPrice}}}"}' http://localhost:8080/graphql
 ```
 To test the application is running "Mutation Samples" i.e. Update/submit
-Note: You just need to change the end point url "http://localhost:8080/graphql" and use Openshift route url instead or execute the query locally inside the container. 
+Note: You just need to change the end point url "localhost:8080/graphql" and use Openshift route url instead or execute the query locally inside the container. 
 ```
 curl -X POST -H "Content-Type: application/json" --data  '{"query":"mutation{  addToStock (input: {  itemNo: 22,  type: 16,  typeDesc:\"Head Band\",  itemDesc: \"Tennis Head Band\",  itemSize: \"One Size\", stock: 23, itemPrice: 5  }){ itemNo  itemSize  itemPrice  stock}}"}'  http://localhost:8080/graphql
 
