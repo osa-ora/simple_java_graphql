@@ -1,0 +1,55 @@
+type Query {
+    getCatalog(catalogId: Int): Catalog
+    getAllItems: [Item]
+    getAllOrders: [Order]
+    getOrder(orderId: Int) : Order
+}
+type Mutation {
+    addToStock(input: NewItem) : Item
+    submitNewOrder(input: NewOrder) : Order
+}
+type Catalog {
+    catalogId: Int
+    catalogType: String
+    items: [Item]
+}
+type Item {
+    itemNo: Int
+    type: Int
+    typeDesc: String
+    itemDesc: String
+    itemPrice: Float
+    itemSize: String
+    stock: Int
+    purchaseCount: Int
+}
+input NewItem {
+    itemNo: Int
+    type: Int
+    typeDesc: String
+    itemDesc: String
+    itemPrice: Float
+    itemSize: String
+    stock: Int
+    purchaseCount: Int
+}
+type Order {
+    orderId: Int
+    orderDate: String
+    totalPrice: Float
+    numberOfItems: Int
+    status: Int
+    statusDesc: String
+    items: [Item]
+    deliveryLocation: String
+}
+input NewOrder {
+    orderId: Int
+    orderDate: String
+    totalPrice: Float
+    numberOfItems: Int
+    status: Int
+    statusDesc: String
+    items: [NewItem]
+    deliveryLocation: String
+}

@@ -1,0 +1,85 @@
+[
+{
+  "orderId": 1001,
+  "orderDate": "21/12/2021",
+  "totalPrice": 46.5,
+  "numberOfItems": 2,
+  "status": 1,
+  "statusDesc": "Submitted",
+  "deliveryLocation": "Giza, Egypt",
+  "items": [
+    {
+    "itemNo": 7,
+    "type": 3,
+    "typeDesc": "Men Jacket",
+    "itemDesc": "Jacket darkblue",
+    "itemPrice": 30.5,
+    "itemSize": "M",
+    "stock": 0,
+    "purchaseCount": 1
+    },
+    {
+      "itemNo": 4,
+      "type": 1,
+      "typeDesc": "Men T-shirt",
+      "itemDesc": "T-Shirt Avengers L",
+      "itemPrice": 8,
+      "itemSize": "L",
+      "stock": 0,
+      "purchaseCount": 2
+    }
+  ]
+},
+{
+  "orderId": 1002,
+  "orderDate": "21/12/2021",
+  "totalPrice": 8,
+  "numberOfItems": 1,
+  "status": 1,
+  "statusDesc": "Submitted",
+  "deliveryLocation": "Port Said, Egypt",
+  "items": [
+    {
+      "itemNo": 6,
+      "type": 2,
+      "typeDesc": "Women T-shirt",
+      "itemDesc": "T-Shirt Polo Red XL",
+      "itemPrice": 8,
+      "itemSize": "XL",
+      "stock": 0,
+      "purchaseCount": 1
+    }
+  ]
+},
+{
+  "orderId": 1003,
+  "orderDate": "22/12/2021",
+  "totalPrice": 28,
+  "numberOfItems": 3,
+  "status": 1,
+  "statusDesc": "Submitted",
+  "deliveryLocation": "Cairo, Egypt",
+  "items": [
+    {
+    "itemNo": 9,
+    "type": 4,
+    "typeDesc": "Women Shoes",
+    "itemDesc": "High Heel Shoes",
+    "itemPrice": 19,
+    "itemSize": "37",
+    "stock": 0,
+    "purchaseCount": 1
+  },
+  {
+    "itemNo": 5,
+    "type": 2,
+    "typeDesc": "Women T-shirt",
+    "itemDesc": "T-Shirt Polo L",
+    "itemPrice": 9,
+    "itemSize": "L",
+    "stock": 0,
+    "purchaseCount": 1
+  }
+  ]
+}
+]

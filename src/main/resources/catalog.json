@@ -1,0 +1,122 @@
+[
+{
+  "itemNo": 1,
+  "type": 1,
+  "typeDesc": "Men T-shirt",
+  "itemDesc": "T-Shirt Polo Blue",
+  "itemPrice": 10.5,
+  "itemSize": "XL",
+  "stock": 10,
+  "purchaseCount": 0
+},
+{
+  "itemNo": 2,
+  "type": 1,
+  "typeDesc": "Men T-shirt",
+  "itemDesc": "T-Shirt Polo Red",
+  "itemPrice": 10.5,
+  "itemSize": "M",
+  "stock": 10,
+  "purchaseCount": 0
+},
+{
+  "itemNo": 3,
+  "type": 1,
+  "typeDesc": "Men T-shirt",
+  "itemDesc": "T-Shirt Avengers M",
+  "itemPrice": 8,
+  "itemSize": "M",
+  "stock": 8,
+  "purchaseCount": 0
+},
+{
+  "itemNo": 4,
+  "type": 1,
+  "typeDesc": "Men T-shirt",
+  "itemDesc": "T-Shirt Avengers L",
+  "itemPrice": 8,
+  "itemSize": "L",
+  "stock": 12,
+  "purchaseCount": 0
+},
+{
+  "itemNo": 5,
+  "type": 2,
+  "typeDesc": "Women T-shirt",
+  "itemDesc": "T-Shirt Polo L",
+  "itemPrice": 9,
+  "itemSize": "L",
+  "stock": 15,
+  "purchaseCount": 0
+},
+{
+  "itemNo": 6,
+  "type": 2,
+  "typeDesc": "Women T-shirt",
+  "itemDesc": "T-Shirt Polo Red XL",
+  "itemPrice": 8,
+  "itemSize": "XL",
+  "stock": 10,
+  "purchaseCount": 0
+},
+{
+  "itemNo": 7,
+  "type": 3,
+  "typeDesc": "Men Jacket",
+  "itemDesc": "Jacket darkblue",
+  "itemPrice": 30.5,
+  "itemSize": "M",
+  "stock": 20,
+  "purchaseCount": 0
+},
+{
+  "itemNo": 8,
+  "type": 3,
+  "typeDesc": "Men Jacket",
+  "itemDesc": "Jacket Gray",
+  "itemPrice": 30.5,
+  "itemSize": "L",
+  "stock": 14,
+  "purchaseCount": 0
+},
+{
+  "itemNo": 9,
+  "type": 4,
+  "typeDesc": "Women Shoes",
+  "itemDesc": "High Heel Shoes",
+  "itemPrice": 19,
+  "itemSize": "37",
+  "stock": 8,
+  "purchaseCount": 0
+},
+{
+  "itemNo": 10,
+  "type": 4,
+  "typeDesc": "Women Shoes",
+  "itemDesc": "High Heel Shoes",
+  "itemPrice": 19,
+  "itemSize": "36",
+  "stock": 12,
+  "purchaseCount": 0
+},
+{
+  "itemNo": 11,
+  "type": 5,
+  "typeDesc": "Men Shoes",
+  "itemDesc": "Classic Black Shoes",
+  "itemPrice": 24,
+  "itemSize": "40",
+  "stock": 10,
+  "purchaseCount": 0
+},
+{
+  "itemNo": 12,
+  "type": 5,
+  "typeDesc": "Men Shoes",
+  "itemDesc": "Classic Blue Shoes",
+  "itemPrice": 26,
+  "itemSize": "41",
+  "stock": 12,
+  "purchaseCount": 0
+}
+]
