@@ -15,6 +15,107 @@ To deploy the application directly into Openshift using s2i you can use the foll
 oc new-app --name=graphql java~https://github.com/osa-ora/simple_java_graphql
 oc expose svc/graphql
 ```
+The application enables query the full data or partial data using graphql capabilities
+```
+# to get full item details
+query {
+  getItem {
+    itemNo
+    type
+    typeDesc
+    itemDesc
+    itemPrice
+    itemSize
+    stock
+    purchaseCount
+  } 
+}
+# to get full catalog details
+query {
+  getCatalog (catalogId: 1) {
+    catalogId
+    catalogType
+    items {
+      itemNo
+      type
+      typeDesc
+      itemDesc
+      itemPrice
+      itemSize
+      stock
+      purchaseCount
+    }
+  }
+}
+# to get full order details
+query {
+  getOrder(orderId: 1001) {
+    orderId
+    orderDate
+    totalPrice
+    numberOfItems
+    status
+    statusDesc
+    deliveryLocation
+    items {
+      itemNo
+      type
+      typeDesc
+      itemDesc
+      itemPrice
+      itemSize
+      stock
+      purchaseCount
+    }
+  }
+}
+# Add item to stock using mutation
+mutation {
+    addToStock (input: { 
+      itemNo: 60,
+      type: 20,
+      typeDesc:"Women T-shirt",
+      itemDesc: "T-Shirt Polo Red XL",
+      itemSize: "XL"
+      stock: 10,
+      itemPrice: 8.0
+    }){
+    itemNo
+    stock
+    itemPrice
+  }
+}
+# Submit new order using mutation
+mutation { 
+  submitNewOrder(input: {
+    orderId: 2003 
+    orderDate: "21/12/2021",  
+    totalPrice: 8,  
+    deliveryLocation: "Cairo Egypt",  
+    status: 1,
+    statusDesc: "Submitted", 
+    numberOfItems: 1  items: [
+      {itemNo: 4, 
+        type: 1, 
+        typeDesc:"Men T-shirt", 
+        itemDesc: "T-Shirt Avengers L", 
+        itemSize: "L",
+        stock: 12, 
+        itemPrice: 8.0, 
+        purchaseCount: 1}]  
+      }
+    ) {
+    orderId
+    orderDate
+    totalPrice
+    numberOfItems
+    status
+    statusDesc
+    deliveryLocation
+  } 
+}
+```
+You can remove any fields that is not required from the caller prospective.
 
 To test the application is running "Query Samples"
 ```
