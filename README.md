@@ -8,14 +8,26 @@ To run locally with Maven installed:
 mvn test // to run the unit tests
 mvn clean test spring-boot:run // to build, test and run the application
 mvn package //to build the jar file of this SpringBoot app
-
+//or package then run
+mvn package
+java -jar target/graph-0.0.1-SNAPSHOT.jar
+//or run a specifc listening port
+java -jar -Dserver.port=8083 target/graph-0.0.1-SNAPSHOT.jar
 ```
 To deploy the application directly into Openshift using s2i you can use the folloing:
 ```
 oc new-app --name=graphql java~https://github.com/osa-ora/simple_java_graphql
 oc expose svc/graphql
 ```
-The application enables query the full data or partial data using graphql capabilities
+To build & run as a Docker image (if you have Docker locally)
+```
+//use the Dockerfile
+docker build -t spring/graph:1.0 .
+docker run -p 8080:8080 spring/graph:1.0
+//or run a specific port e.g. 8083
+docker run -p 8083:8083 -e PORT=8083 spring/graph:1.0
+```
+The application enables query for the full or partial data using graphql capabilities
 ```
 # to get full item details
 query {
