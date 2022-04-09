@@ -1,8 +1,68 @@
 # Simple Java SpringBoot GraphQL Example
 
-This Project provides basic query/mutations operation for Catalog/Orders showing how easy and simple to use GraphQL to retrive/update what is really required only. The project uses JSON files to load initial catalog items and orders to show these operatons.  
+This Project provides basic query/mutations operation for Catalog/Orders objects showing how easily you can use GraphQL to retrive/update the required data only. The project uses JSON files to load initial catalog items and orders to demostrate these operatons.   
 
-To run locally with Maven installed:   
+GraphQL is efficient in reducing the over/under-fetching of the data which improve the performance by reducing the number of calls required to load the data, it might be slower then normal REST APIs but by fixing this over/under fetching the overall system performance become better. It also reduces the number of API varaiants required and provides some flexibility to the consumers for dynamically changing APIs. 
+
+![og-image](https://user-images.githubusercontent.com/18471537/162588891-85f0d961-4833-446b-b4f4-6da5ca1abb92.png)
+
+
+## How to Use GraphQL within your SpringBoot App
+- First we need to import the required depedencies in the maven POM file as you can see in the POM file we are using Netflix Graphql library.
+```
+  <groupId>com.netflix.graphql.dgs</groupId>
+  <artifactId>graphql-dgs-platform-dependencies</artifactId>
+  ....
+```
+- Add inside the resources/schema folder "schema.graphqls" and define your objects as following:
+```
+// This is for all your queries i.e. data fetching using the Query section
+type Query {
+    getCatalog(catalogId: Int): Catalog
+    getAllItems: [Item]
+    getItem(itemId: Int): Item
+    getAllOrders: [Order]
+    getOrder(orderId: Int) : Order
+}
+//This is for all your data inserts/updates/delete using Mutation section
+type Mutation {
+    addToStock(input: NewItem) : Item
+    deleteFromStock(input: Int): Boolean
+    submitNewOrder(input: NewOrder) : Order
+}
+//This is a custom type used for data fetching and refer to other object "Item" using "type" keyword
+type Catalog {
+    catalogId: Int
+    catalogType: String
+    items: [Item]
+}
+type Item {
+    itemNo: Int
+    type: Int
+    ....
+}
+//This define a type used to insert/update/delete data using "input" keyword
+input NewItem {
+    itemNo: Int
+    type: Int
+    .....
+}
+```
+- Implement the data manipulations for example:
+```
+//1. annotate your class with "@DgsComponent"
+  @DgsComponent
+  public class CatalogDatafetcher {
+
+//2. This is a query to fetch one item in the catalog using input argument and annotated with "@DgsQuery"
+    @DgsQuery
+    public Item getItem(@InputArgument int itemId){
+    
+//3. This is used to insert new item, it uses the Mutation inout types as input arguments and annotated with "@DgsMutation"
+    @DgsMutation
+    public Item addToStock(@InputArgument (value="input") NewItem newItem){
+```
+To run it locally using Maven:   
 
 ```
 mvn test // to run the unit tests
@@ -14,12 +74,12 @@ java -jar target/graph-0.0.1-SNAPSHOT.jar
 //or run a specifc listening port
 java -jar -Dserver.port=8083 target/graph-0.0.1-SNAPSHOT.jar
 ```
-To deploy the application directly into Openshift using s2i you can use the folloing:
+To deploy the application directly into Openshift using s2i you can use the following (using OpenShift "OC" client:
 ```
 oc new-app --name=graphql java~https://github.com/osa-ora/simple_java_graphql
 oc expose svc/graphql
 ```
-To build & run as a Docker image (if you have Docker locally)
+To build & run as a Docker image (if you have Docker available locally)
 ```
 //use the Dockerfile
 docker build -t spring/graph:1.0 .
